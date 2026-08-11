@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NUNYA Lab - Building AI for African contexts. Coming soon from Accra, Ghana.">
+  <title>NUNYA Lab | Coming Soon</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Oxanium:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold-bg: #D4AF37;
+      --gold-dark: #B8941D;
+      --gold-light: #E8C84A;
+      --black: #0A0A0A;
+      --white: #F5F5F0;
+      --text-dim: #4A4A4A;
+      
+      --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Oxanium', cursive;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --transition: all 0.2s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    a {
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: linear-gradient(135deg, var(--gold-bg) 0%, var(--gold-dark) 100%);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 2rem;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--black);
+      font-weight: 400;
+      font-size: 1.125rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+    
+    .logo-bold {
+      font-weight: 700;
+      font-size: 1.1em;
+      color: var(--black);
+    }
+    
+    .logo:hover {
+      color: var(--black);
+    }
+    
+    /* Main Content */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 64px;
+    }
+    
+    .hero {
+      text-align: center;
+      padding: 6rem 0;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .logo-large {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2.5rem;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+      animation: fadeInDown 0.8s ease-out;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+      font-family: var(--font-display);
+      font-style: italic;
+      text-transform: lowercase;
+    }
+    
+    .tagline {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      font-weight: 400;
+      font-style: normal;
+      color: var(--black);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+    
+    .product-list {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--black);
+      line-height: 1.4;
+      margin-bottom: 3rem;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+      text-transform: lowercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .product-list span:not(:last-child)::after {
+      content: ' // ';
+      opacity: 0.7;
+      margin: 0 0.75rem;
+    }
+    
+    .email-section {
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+    
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gold-dark);
+      font-size: 1.125rem;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--gold-dark);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      background: transparent;
+    }
+    
+    .email-link:hover {
+      background: var(--gold-dark);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    
+    .email-icon {
+      width: 20px;
+      height: 20px;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--gold-bg) 0%, var(--gold-dark) 100%);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .footer-text {
+      font-size: 0.875rem;
+      color: var(--black);
+    }
+    
+    /* Adinkra Divider */
+    .adinkra-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--black), transparent);
+      margin: 3rem auto;
+      max-width: 300px;
+      opacity: 0.2;
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .product-list {
+        font-size: 1.25rem;
+      }
+      
+      .logo-large {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .nav-container {
+        padding: 0 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .product-list {
+        font-size: 1.125rem;
+        line-height: 2.2;
+      }
+      
+      .email-link {
+        font-size: 1rem;
+        padding: 0.625rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <img src="../labs/images/nunya-logo-nav.png" alt="NUNYA" class="logo-mark" width="36" height="36">
+        <span class="logo-text"><span class="logo-bold">NUNYA</span> Lab</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div class="hero">
+        <img src="../labs/images/nunya-logo-nav.png" alt="NUNYA Lab" class="logo-large" width="120" height="120">
+        
+        <h1>coming soon</h1>
+        
+        <p class="tagline">
+          NUNYA Compliance Guard: Artificial Intelligence powered regulatory protection for African startups and SMEs.
+        </p>
+        
+        <p class="product-list">
+          venture launch // compliance guard // NUNYA Chat
+        </p>
+        
+        <div class="adinkra-divider"></div>
+        
+        <div class="email-section">
+          <a href="mailto:info@nunyalab.ai" class="email-link">
+            <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            info@nunyalab.ai
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="footer-text">&copy; 2026 NUNYA Lab. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
