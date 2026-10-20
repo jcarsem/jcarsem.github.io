@@ -1,0 +1,8 @@
+# NUNYA R&D Lab — https://nunyalab.ai
+# Allow everything; keep the duplicate one-pager out of the index.
+
+User-agent: *
+Allow: /
+Disallow: /landing-page.html
+
+Sitemap: https://nunyalab.ai/sitemap.xml
