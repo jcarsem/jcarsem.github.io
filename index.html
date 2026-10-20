@@ -152,6 +152,51 @@
     </div>
   </section>
 
+  <!-- Open for Audit -->
+  <section class="cta" id="audit">
+    <div class="container">
+      <h2 style="font-size: 1.75rem;">Everything We Publish Is Open for Audit</h2>
+      <p style="max-width: 62ch; margin: 0 auto 1.25rem;">
+        Our posts, model cards, evaluations and audit reports are written to be checked &mdash; by the people
+        they are meant to serve. If you are a Ghanaian lawyer, teacher, nurse, farmer, student, or anyone
+        whose work our claims touch, you are the intended reader and the intended reviewer.
+      </p>
+      <p style="max-width: 62ch; margin: 0 auto 1.5rem; color: var(--text-secondary);">
+        Found an error, an overclaim, a missing limitation, or a case we got wrong? Say so. We publish what
+        we find, including when it is unflattering.
+      </p>
+
+      <form id="audit-feedback" class="contact-form" style="max-width: 520px; margin: 0 auto; text-align: left;"
+            action="mailto:j.carsem@gmail.com?subject=NUNYA%20Audit%20Feedback" method="post" enctype="text/plain">
+        <div class="form-group">
+          <label for="af-name">Name <span style="color: var(--text-secondary);">(optional)</span></label>
+          <input type="text" id="af-name" name="name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="af-context">What is your field? <span style="color: var(--text-secondary);">(optional)</span></label>
+          <input type="text" id="af-context" name="context" placeholder="e.g. legal practice, teaching, nursing, farming">
+        </div>
+        <div class="form-group">
+          <label for="af-message">What should we correct?</label>
+          <textarea id="af-message" name="message" rows="5" required
+                    placeholder="Quote the claim, and say what is wrong or missing."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Audit Feedback</button>
+        <p id="af-fallback" style="display:none; margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+          If your mail app did not open, copy this and send it to
+          <a href="mailto:j.carsem@gmail.com">j.carsem@gmail.com</a>.
+          <textarea id="af-copy" rows="6" readonly style="width:100%; margin-top:0.5rem;"></textarea>
+        </p>
+      </form>
+
+      <noscript>
+        <p style="margin-top: 1rem;">
+          Email your finding to <a href="mailto:j.carsem@gmail.com?subject=NUNYA%20Audit%20Feedback">j.carsem@gmail.com</a>.
+        </p>
+      </noscript>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta">
     <div class="container">
@@ -172,6 +217,36 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Audit feedback: the form posts to the visitor's mail app via mailto.
+    // That hand-off cannot be detected, so if nothing appears to happen we
+    // reveal a copyable block instead of letting the finding vanish.
+    (function () {
+      var form = document.getElementById('audit-feedback');
+      if (!form) return;
+      var fallback = document.getElementById('af-fallback');
+      var copy = document.getElementById('af-copy');
+      var fields = form.elements;
+
+      form.addEventListener('submit', function () {
+        var message = (fields['message'].value || '').trim();
+        if (!message) return;
+        var name = (fields['name'].value || '').trim();
+        var context = (fields['context'].value || '').trim();
+
+        copy.value =
+          'NUNYA audit feedback\n\n' +
+          'Name: ' + (name || '(not given)') + '\n' +
+          'Field: ' + (context || '(not given)') + '\n\n' +
+          'Finding:\n' + message + '\n';
+
+        window.setTimeout(function () {
+          fallback.style.display = 'block';
+        }, 1200);
+      });
+    })();
+  </script>
 
   <script src="js/nunya.min.js?v=2" defer></script>
 </body>
